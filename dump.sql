@@ -164,41 +164,6 @@ ALTER SEQUENCE public."User_id_seq" OWNED BY public."User".id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.users (
-    id bigint NOT NULL,
-    login text,
-    password text,
-    role bigint
-);
-
-
-ALTER TABLE public.users OWNER TO postgres;
-
---
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.users_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.users_id_seq OWNER TO postgres;
-
---
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
-
-
---
 -- Name: Order Id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -224,13 +189,6 @@ ALTER TABLE ONLY public."Products" ALTER COLUMN id SET DEFAULT nextval('public."
 --
 
 ALTER TABLE ONLY public."User" ALTER COLUMN id SET DEFAULT nextval('public."User_id_seq"'::regclass);
-
-
---
--- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
 
 --
@@ -288,14 +246,6 @@ COPY public."User" (id, login, pas, role) FROM stdin;
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.users (id, login, password, role) FROM stdin;
-\.
-
-
---
 -- Name: Order_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -321,13 +271,6 @@ SELECT pg_catalog.setval('public."Products_Id_seq"', 11, true);
 --
 
 SELECT pg_catalog.setval('public."User_id_seq"', 1, false);
-
-
---
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.users_id_seq', 1, false);
 
 
 --
@@ -363,14 +306,6 @@ ALTER TABLE ONLY public."User"
 
 
 --
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.users
-    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
-
-
---
 -- Name: Order_product Order Id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -397,4 +332,3 @@ ALTER TABLE ONLY public."Order"
 --
 -- PostgreSQL database dump complete
 --
-
